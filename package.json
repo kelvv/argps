@@ -1,0 +1,51 @@
+{   
+  "name": "argps",
+  "version": "1.0.3",
+  "description": "Parsing arguments to Object automatically",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --quiet index.js ./test",
+    "lint-fix": "eslint --quiet --fix index.js ./test",
+    "test": "./node_modules/.bin/_mocha ./test",
+    "test-watch": "./node_modules/.bin/_mocha -w -b ./test",
+    "commit": "commit-wizard",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jarvin-Guan/argps.git"
+  },
+  "keywords": [
+    "arg",
+    "arguments",
+    "parsing"
+  ],
+  "author": "jarvin-guan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jarvin-Guan/argps/issues"
+  },
+  "homepage": "https://github.com/Jarvin-Guan/argps#readme",
+  "devDependencies": {
+    "coveralls": "^2.11.9",
+    "eslint": "^2.8.0",
+    "mocha": "^1.5.0",
+    "pre-git": "^3.8.3",
+    "should": "^4.0.1"
+  },
+  "config": {
+    "pre-git": {
+      "commit-msg": "",
+      "pre-commit": [
+      ],
+      "pre-push": [
+        "npm run lint",
+        "npm run test",
+        "npm run cover"
+      ],
+      "post-commit": [],
+      "post-checkout": [],
+      "post-merge": []
+    }
+  }
+}
